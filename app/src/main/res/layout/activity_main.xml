@@ -21,6 +21,7 @@
             android:layout_height="match_parent">
 
             <!-- Administration Tab UI elements -->
+            <!-- Administration Tab UI elements -->
             <LinearLayout
                 android:id="@+id/adminLayout"
                 android:layout_width="match_parent"
@@ -28,8 +29,9 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
+                <!-- Update Administration Tab buttons -->
                 <Button
-                    android:id="@+id/btnAdd"
+                    android:id="@+id/btnAddAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Add"
@@ -43,21 +45,54 @@
                     android:onClick="deleteAdmin" />
 
                 <Button
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btnUpdateAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Update"
                     android:onClick="update" />
 
                 <Button
-                    android:id="@+id/btnSearch"
+                    android:id="@+id/btnSearchAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Search"
                     android:onClick="search" />
 
+                <!-- Add these EditText elements -->
+                <!-- Inside the LinearLayout for Administration Tab -->
+                <EditText
+                    android:id="@+id/dataToAddEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data to Add" />
+
+                <EditText
+                    android:id="@+id/dataToDeleteEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data to Delete" />
+
+                <EditText
+                    android:id="@+id/dataToUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data to Update" />
+
+                <EditText
+                    android:id="@+id/dataToSearchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data to Search" />
+
+                <EditText
+                    android:id="@+id/editLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Last Name" />
+
             </LinearLayout>
 
+            <!-- Main content for both tabs -->
             <!-- Main content for both tabs -->
             <LinearLayout
                 android:id="@+id/generalLayout"
@@ -65,103 +100,109 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <!-- RadioGroup for Gender -->
+                <RadioGroup
+                    android:id="@+id/genderRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
+
+                <!-- Message Box -->
                 <TextView
                     android:id="@+id/msgBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to the Registration Tab!" />
 
+                <!-- Student ID (Generated Randomly, not visible to user) -->
+                <!-- Note: You can generate Student ID programmatically in your code -->
+                <!-- Example: studentIdTextView.setText(generateRandomStudentId()); -->
+                <TextView
+                    android:id="@+id/studentIdTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Student ID: [Generated Randomly]" />
+
+                <!-- Name -->
                 <EditText
                     android:id="@+id/editName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Name" />
 
-                />
-                <EditText
-                    android:id="@+id/dataToAddEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
-                <EditText
-                    android:id="@+id/dataToUpdateEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                />
-                <EditText
-                    android:id="@+id/dataToSearchEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:id="@+id/nameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
+                <!-- Last Name -->
                 <EditText
                     android:id="@+id/lastNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:id="@+id/genderEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                    android:hint="Last Name" />
+
+                <!-- Faculty -->
                 <EditText
                     android:id="@+id/facultyEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:hint="Faculty" />
+
+                <!-- Department -->
                 <EditText
                     android:id="@+id/departmentEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:hint="Department" />
+
+                <!-- Advisor -->
                 <EditText
                     android:id="@+id/advisorEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:hint="Advisor" />
 
+                <!-- Additional Data Fields (if needed) -->
 
-
-
-                <EditText
-                    android:id="@+id/dataToDeleteEditText"
+                <!-- Buttons -->
+                <Button
+                    android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                />
-
-
-
-                <EditText
-                    android:id="@+id/editLastName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Last Name" />
+                    android:text="Register"
+                    android:onClick="register" />
 
                 <Button
-                    android:id="@+id/btnRead"
+                    android:id="@+id/btnCancel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Read"
-                    android:onClick="read" />
+                    android:text="Cancel"
+                    android:onClick="cancel" />
 
                 <Button
-                    android:id="@+id/btnWrite"
+                    android:id="@+id/btnUpdate2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Write"
-                    android:onClick="write" />
+                    android:text="Update"
+                    android:onClick="update" />
 
                 <Button
-                    android:id="@+id/btnDelete"
+                    android:id="@+id/btnSearch2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:onClick="delete" />
+                    android:text="Search"
+                    android:onClick="search" />
 
+                <!-- List View to Display Registered Students (if needed) -->
                 <ListView
                     android:id="@+id/listView"
                     android:layout_width="match_parent"
@@ -169,12 +210,28 @@
 
             </LinearLayout>
 
+
+            <!-- Registered Students Tab UI elements -->
             <LinearLayout
                 android:id="@+id/registeredStudentsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btnDisplayDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Display Student Details"
+                    android:onClick="displayStudentDetails" />
+
+                <ListView
+                    android:id="@+id/registeredStudentsListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+
 
 
 

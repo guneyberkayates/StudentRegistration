@@ -19,11 +19,15 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private TextView msgBox;
-    private EditText editName, editLastName;
+    private EditText editName;
+    private EditText lastNameEditText;
+
+    private EditText dataToUpdateEditText;
     private EditText dataToAddEditText;
     private EditText dataToDeleteEditText;
-    private EditText dataToUpdateEditText;
     private EditText dataToSearchEditText;
+    private EditText editLastName;
+
     private SQLiteDatabase database;
     private ListView listView;
     private String path;
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         dataToDeleteEditText = findViewById(R.id.dataToDeleteEditText);
         dataToSearchEditText = findViewById(R.id.dataToSearchEditText);
         editLastName = findViewById(R.id.editLastName);
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.registeredStudentsListView);
 
         File myDbPath = getApplication().getFilesDir();
         path = myDbPath + "/" + "cmpe408"; // name of the database
@@ -315,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Additional methods for Registration Tab
+    // Additional methods for Registration Tab
     public void register(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Register Student")
@@ -323,34 +328,44 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Get user input from the dialog
-                        EditText nameEditText = findViewById(R.id.nameEditText); // Replace with your actual EditText ID
+                        EditText nameEditText = findViewById(R.id.editName);
                         String name = nameEditText.getText().toString();
 
-                        EditText lastNameEditText = findViewById(R.id.lastNameEditText); // Replace with your actual EditText ID
+                        EditText lastNameEditText = findViewById(R.id.editLastName);
                         String lastName = lastNameEditText.getText().toString();
 
                         // Generate a 10-digit random Student ID
                         String studentID = generateRandomStudentID();
 
-                        EditText genderEditText = findViewById(R.id.genderEditText); // Replace with your actual EditText ID
-                        String gender = genderEditText.getText().toString();
+                        RadioGroup genderRadioGroup = findViewById(R.id.genderRadioGroup);
+                        int selectedGenderId = genderRadioGroup.getCheckedRadioButtonId();
+                        RadioButton selectedGenderRadioButton = findViewById(selectedGenderId);
+                        String gender = selectedGenderRadioButton.getText().toString();
 
-                        EditText facultyEditText = findViewById(R.id.facultyEditText); // Replace with your actual EditText ID
+                        EditText facultyEditText = findViewById(R.id.facultyEditText);
                         String faculty = facultyEditText.getText().toString();
 
-                        EditText departmentEditText = findViewById(R.id.departmentEditText); // Replace with your actual EditText ID
+                        EditText departmentEditText = findViewById(R.id.departmentEditText);
                         String department = departmentEditText.getText().toString();
 
-                        EditText advisorEditText = findViewById(R.id.advisorEditText); // Replace with your actual EditText ID
+                        EditText advisorEditText = findViewById(R.id.advisorEditText);
                         String advisor = advisorEditText.getText().toString();
 
                         // Execute SQL INSERT statement to add student data to the database
-                        String insertQuery = "INSERT INTO student_table (name, lastName, studentID, gender, faculty, department, advisor) " +
+                        String insertQuery = "INSERT INTO student (name, surname, studentID, gender, faculty, department, advisor) " +
                                 "VALUES ('" + name + "', '" + lastName + "', '" + studentID + "', '" + gender + "', '" + faculty + "', '" + department + "', '" + advisor + "')";
                         database.execSQL(insertQuery);
 
                         // Display appropriate messages to the user
                         Toast.makeText(MainActivity.this, "Student registered successfully", Toast.LENGTH_SHORT).show();
+
+                        // Reset fields after registration
+                        nameEditText.setText("");
+                        lastNameEditText.setText("");
+                        genderRadioGroup.clearCheck();
+                        facultyEditText.setText("");
+                        departmentEditText.setText("");
+                        advisorEditText.setText("");
                     }
                 })
                 .setNegativeButton("Cancel", null)
@@ -373,6 +388,21 @@ public class MainActivity extends AppCompatActivity {
                         // Implement cancel logic (e.g., reset registration fields)
                         // Display appropriate messages to the user
                         Toast.makeText(MainActivity.this, "Registration canceled", Toast.LENGTH_SHORT).show();
+
+                        // Reset fields after cancellation
+                        EditText nameEditText = findViewById(R.id.editName);
+                        EditText lastNameEditText = findViewById(R.id.editLastName);
+                        RadioGroup genderRadioGroup = findViewById(R.id.genderRadioGroup);
+                        EditText facultyEditText = findViewById(R.id.facultyEditText);
+                        EditText departmentEditText = findViewById(R.id.departmentEditText);
+                        EditText advisorEditText = findViewById(R.id.advisorEditText);
+
+                        nameEditText.setText("");
+                        lastNameEditText.setText("");
+                        genderRadioGroup.clearCheck();
+                        facultyEditText.setText("");
+                        departmentEditText.setText("");
+                        advisorEditText.setText("");
                     }
                 })
                 .setNegativeButton("Cancel", null)
