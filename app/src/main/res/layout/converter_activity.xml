@@ -1,0 +1,45 @@
+<!-- res/layout/converter_activity.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Amount"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editAmount"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioUSD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USD"/>
+
+        <RadioButton
+            android:id="@+id/radioLira"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lira"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnConvert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroup"
+        android:text="Convert"/>
+
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnConvert"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>
