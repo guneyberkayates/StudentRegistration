@@ -6,4 +6,6 @@
     <string name="remove">REMOVE</string>
     <string name="reset">RESET</string>
     <string name="invalid_age">Invalid Age! Please enter a valid age greater than zero.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
