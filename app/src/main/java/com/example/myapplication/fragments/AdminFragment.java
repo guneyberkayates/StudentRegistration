@@ -86,7 +86,6 @@ public class AdminFragment extends Fragment {
 
                 String table = "create table admins (recID integer PRIMARY KEY autoincrement, faculty text, department text, lecturer text);";
                 database.execSQL(table);
-
                 Toast.makeText(requireContext(), "Admins Table is created", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(requireContext(), "We have a database already", Toast.LENGTH_LONG).show();
